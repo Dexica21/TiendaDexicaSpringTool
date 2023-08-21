@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    width: 100%;
+}
+
+.Titulo{
+    width: 10%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #0591ee;
+    width: 50%;
+    height: 100%;
+}
+
+.Titulo h1{
+    margin-left: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.Informacion{
+    width: 90%;
+    text-align: center;
+    justify-content: start;   
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form input{
+    width: 30%;
+    padding: 5px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.form button{
+    width: 20%;
+    padding: 6px;
+    border-radius: 20px;
+    background-color: cornflowerblue;
+}
+
+
+

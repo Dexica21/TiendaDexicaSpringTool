@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Productos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/DetalleProducto.css">
+</head>
+<body>
+    <div class="Titulos">
+        <h1>Polos</h1>
+    </div>
+    <div class="ConteinerTotal">
+        <div class="producto">
+            <div class="containerImage">
+                <img src='/Detalleproductoimg/wishStop.jpg' alt="Polo" id="ImageBox">
+            </div>
+            <div class="ImagePeque">
+                <img src='/Detalleproductoimg/wishStop.jpg' alt="" onclick="ImagenesDetalle(this)">
+                <img src='/Detalleproductoimg/wishtoStopImagen2.jpeg' alt="" onclick="ImagenesDetalle(this)">
+                <img src='/Detalleproductoimg/wishtoStopImagen3.jpeg' alt="" onclick="ImagenesDetalle(this)">
+            </div>
+        </div>
+        <div class="Contenedor">
+            <div class="Contenedor-dos">
+                <div class="letras">
+                    <h1>Wish Stop</h1>
+                </div>
+                <div class="parrafo">
+                    <p>Marca de alta gama con artesanía excepcional y estética. Estampado grande y resaltante con los colores definidos y una comodidad que no encontraras en ninguna otra prenda</p>
+                </div>
+                <div class="color">
+                    <label>Color:</label>
+                    <select name="Colores" id="">
+                        <option>Negro</option>
+                    </select>
+                </div>
+                <div class="Talla">
+                    <label>Talla:</label>
+                    <select name="Tallas" id="">
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                        <option>Extra Large</option>
+                    </select>
+                </div>
+                <div class="Precio">
+                    <h2>S/.70</h2>
+                </div>
+                <div class="button">
+                    <button type="submit">Agregar al carrito<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+                <div class="button2">
+                    <a href="/Producto/Catalogo"><button type="submit" >Regresar al catalogo<i class="fa-solid fa-arrow-left"></i></button></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="contenedor-3">
+        <h1>Productos relacionados</h1>
+    </div>
+    
+</body>
+<script src="/Js/DetalleProducto.js"></script>
+</html>

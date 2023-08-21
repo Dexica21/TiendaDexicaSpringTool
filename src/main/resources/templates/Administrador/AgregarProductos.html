@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto</title>
+
+        <!-- Custom fonts for this template-->
+        <link href="/Administración/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    
+        <!-- Custom styles for this template-->
+        <link href="/Administración/css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+        <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.5/datatables.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<div th:replace="Administrador/CabezeraModerna :: nav_var"></div>
+	
+	<div class="container-fluid">
+   	
+   	     <form id="form-producto" th:action="@{/Administrador/AgregarProducto}" method="post" th:object="${productos}" enctype="multipart/form-data">
+            <h2>Agregar Producto</h2>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" th:field="*{descripcion}" class="form-control" id="descripcion"></input>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Descripción del producto:</label>
+                <textarea type="text" th:field="*{parrafo}" class="form-control" id="parrafo"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" th:field="*{precio}" class="form-control" id="precio"></input>
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Stock:</label>
+                <input class="form-control" th:field="*{stock}" id="Stock" rows="3"></input>
+            </div>
+            <div class="form-group">
+                <label for="imagen">Imagen:</label>
+                <input style="margin-top: 10px;" type="file" class="form-control-file" id="ImagenFile" name="imagenFile"></input>
+                <div class="image-preview-container" style="display: inline-block; box-sizing: border-box; border: 2px solid #ccc; padding: 4px; margin-top: 10px;">
+        			<img id="imagenPreview" src="#" alt="Previsualización de imagen" style="display: none; max-width: 200px; margin-top: 10px;">
+    			</div>
+            </div>
+            <div class="form-group">
+    			<label for="categoria">Categoría:</label>
+    			<select class="form-control" th:field="*{categoria}">
+        			<option value="">Selecciona una categoría</option>
+        			<option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}" th:text="${categoria.descripcion}"></option>
+    			</select>
+			</div>
+			<div class="form-group">
+    			<label for="modelo">Modelo:</label>
+    			<select class="form-control" th:field="*{modelo}">
+        			<option value="">Selecciona un modelo:</option>
+        			<option th:each="modelo : ${modelos}" th:value="${modelo.idModelo}" th:text="${modelo.descripcion}"></option>
+    			</select>
+			</div>
+			<div class="form-group">
+    			<label for="colores">Seleccione los colores de la prenda:</label>
+    			<select class="form-control" th:field="*{colores}" multiple="multiple">
+        			<option th:each="color : ${colores}" th:value="${color.idColores}" th:text="${color.descripcion}"></option>
+    			</select>
+			</div>
+            <button id="btn-guardar-producto" type="submit" class="btn btn-primary">Guardar Modelo</button>
+            <button id="btn-cancelar-producto" type="submit"  class="btn btn-secondary">Cancelar</button>
+			<hr class="sidebar-divider">
+			<h6>Dexica</h6>
+        </form>
+
+		<div id="progress-modal" class="modal fade" tabindex="-1">
+		        <div class="modal-dialog modal-dialog-centered">
+		            <div class="modal-content">
+		                <div class="modal-body">
+		                    <div class="progress-container">
+		                        <div class="progress-bar-wrapper">
+		                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+		                            <div class="progress-message">Agregando categoría...</div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    
+		    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .progress-bar-wrapper {
+            position: relative;
+            width: 100%;
+            height: 2rem;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            position: absolute;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .progress-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+        }
+    </style>
+
+</body>
+    <script src="/Administración/vendor/jquery/jquery.min.js"></script>
+    <script src="/Administración/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Administración/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="/Administración/js/sb-admin-2.min.js"></script>
+
+
+	<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="/Administración/js/Js.js"></script>
+    <script src="/Js/AdministracionProductos.js"></script>
+    <script src="/Administración/js/Productos.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <!-- Agrega tus enlaces a hojas de estilo y Bootstrap aquí -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+</head>
+<body>
+	
+    <div class="container">
+        <div class="Titulos text-center py-3">
+            <h1>Detalles del Producto</h1>
+        </div>
+        <div class="ConteinerTotal row">
+            <div class="producto col-md-6">
+                <div class="containerImage">
+                    <img th:src="${producto.imagen}" alt="Polo" class="img-fluid rounded">
+                </div>
+                <!-- Resto de imágenes pequeñas -->
+            </div>
+            <div class="Contenedor col-md-6">
+                <div class="Contenedor-dos p-4">
+                    <div class="letras">
+                        <h1 th:text="${producto.descripcion}"></h1>
+                    </div>
+                    <div class="parrafo mt-3">
+                        <p th:text="${producto.parrafo}"></p>
+                    </div>
+                    <hr class="sidebar-divider my-0">
+                    <div class="stock mt-3">
+                        <p>Stock disponible: <span th:text="${producto.stock}"></span></p>
+                    </div>
+                    <hr class="sidebar-divider my-0">
+                    <div class="detalle-form mt-3">
+                        <div class="color form-group">
+                            <label for="Colores">Color:</label>
+                            <select name="Colores" id="Colores" class="form-control">
+                                <option th:each="color : ${colores}" th:text="${color.descripcion}"></option>
+                            </select>
+                        </div>
+                        <hr class="sidebar-divider my-0">
+                        <div class="Talla form-group">
+                            <label for="Tallas">Talla:</label>
+                            <select name="Tallas" id="Tallas" class="form-control">
+                                <option>Small</option>
+                                <option>Medium</option>
+                                <option>Large</option>
+                                <option>Extra Large</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="Precio mt-3">
+                        <h2 th:text="'S/.' + ${producto.precio}"></h2>
+                    </div>
+                    <div class="button mt-3">
+                        <button type="button" class="btn btn-primary" >Agregar al carrito<i class="fa-solid fa-cart-shopping"></i></button>
+                    </div>
+                    <div class="button2 mt-3">
+                        <a href="/Producto/Catalogo" class="btn btn-secondary">Regresar al catálogo<i class="fa-solid fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor-3 text-center mt-4">
+            <h1>Productos relacionados</h1>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/Js/Catalogo.js"/></script>
+</body>
+</html>

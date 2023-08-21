@@ -1,0 +1,12 @@
+
+#carouselExampleCaptions {
+	width: 40%;
+}
+
+
+@media (max-width: 768px) {
+    #carouselExampleCaptions {
+        width: 85%; 
+        margin: 0 auto; 
+    }
+}

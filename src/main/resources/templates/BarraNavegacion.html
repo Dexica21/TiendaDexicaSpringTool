@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<section th:fragment="BarraNavegacion" class="contenedor-1" id="contenedor-1">
+            
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top "style="background-color: black;">
+                    <div class="container">
+                    <a href="/Dexica/home" class="navbar-brand"><span class="text-primary">DEXI</span>CA</a>
+                    <button class="navbar-toggler btn-primary" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarS"
+                    aria-controls="navbarS"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    >
+                    <span class="navbar-toggler-icon d-block" id="navbarS"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarS">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                            <li class="nav-item mx-3">
+                                <a href="/Dexica/home" class="nav-link">Inicio</a>
+                            </li>
+                            <div class="DesplegableProductos">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Productos</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/Producto/Catalogo">Polos</a></li>
+                                    </ul>
+                                </li>
+                            </div> 
+                            <li class="nav-item mx-3">
+                                <a href="#contenedor-3" class="nav-link">Nosotros</a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a href="#contenedor-4" class="nav-link">About</a>
+                            </li>
+                        </ul>
+                        <div class="container-fluid">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" id="searchInput">
+                                <button class="btn btn-primary " type="submit">Buscar</button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                    </div>
+                    <div class="IconosNav">
+                        <div class="CarritoCompras">
+                            <ul class="nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false"><i class="fa-solid fa-bag-shopping"></i></a>          
+                        </li>
+                    </ul>
+                        </div>
+                        <div class="IconoUser">
+    				<li class="nav-item dropdown">
+    					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-user"></i></a>
+    					<ul class="dropdown-menu">
+        			<li th:if="${nombreUsuarioAutenticado != null}">
+			            <a class="dropdown-item" href="/Dexica/home">
+			                <span th:text="${nombreUsuarioAutenticado}"></span>
+			            </a>
+			        </li>
+			        <li th:unless="${nombreUsuarioAutenticado != null}">
+			            <a class="dropdown-item" href="/Web/Dexica/Registro">Registrarse</a>
+			        </li>
+					
+        			<li><a class="dropdown-item" href="#">Mis Notificaciones</a></li>
+        			<li><a class="dropdown-item" href="/Usuario/MisPedidos">Mis Pedidos</a></li>
+        			<li><a class="dropdown-item" href="/Usuario/Configuracion">Configurar Cuenta</a></li>
+        			<li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
+    			</ul>
+					</li>
+					</div>
+                    </div>
+                </nav>
+                
+                
+            </header>
+            
+            
+</body>
+</html>

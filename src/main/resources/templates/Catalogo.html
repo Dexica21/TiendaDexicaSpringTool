@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/Catalogo.css">
+    <script src="/Js/jquery-3.7.0.js"></script>
+    <link rel="icon" href='/Imagenes/logo.jpeg'>
+    
+      
+    <script>
+    $(document).ready(function(){
+        $("#ButtonFinalizarCompra").click(function(){
+        $("#ButtonFinalizarCompra").css({
+            "background-color": "black",
+            "border": "3px solid #0066ff"
+            });
+        });
+        
+    });
+    </script>
+    
+    <script>
+    $(document).ready(function() {
+        // Agregar evento input al campo de búsqueda
+        $("#searchInput").on("input", function() {
+            // Obtener el valor del campo de búsqueda
+            var searchText = $(this).val().trim().toLowerCase();
+
+            // Filtrar las tarjetas según el valor de búsqueda
+            $(".card-item").each(function() {
+                var cardTitle = $(this).find(".card-title").text().toLowerCase();
+                
+                // Mostrar u ocultar la tarjeta según si coincide con la búsqueda
+                if (cardTitle.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+    
+    
+</head>
+<body>
+	<header>
+        <section th:replace=BarraNavegacion::section></section>
+    </header>
+
+  
+
+    <div class="ContainerPrincipal">
+        <div class="Categorias">
+            <h7> Filtrar Por:</h7>
+        <div id="modelo-container">
+            <h6 style="margin-top: 20px; margin-left:20px;"> Modelo:</h6>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="modelo-urbano" value="urbano" onclick="filtrarProductos()">
+                <label class="form-check-label" for="urbano" style="width: 50px;" id="Urbano">Urbano</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="modelo-sport" value="sport" onclick="filtrarProductos()">
+                <label class="form-check-label" for="inlineCheckbox2" style="width: 50px;" id="Sport">Sport</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="modelo-dark" value="dark" onclick="filtrarProductos()">
+                <label class="form-check-label" for="inlineCheckbox3" style="width: 50px;" id="Dark">Dark</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="modelo-retro" value="retro" onclick="filtrarProductos()">
+                <label class="form-check-label" for="inlineCheckbox4" style="width: 50px;" id="Retro">Retro</label>
+            </div>
+        </div>
+        
+            <div id="color-container">
+                <h6 style="margin-top: 20px; margin-left:20px;"> Colores:</h6>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="color-rojo" value="Rojo" onclick="filtrarProductos()">
+                <label class="form-check-label" for="color-rojo" style="width: 50px;" id="Rojo">Rojo</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="color-azul" value="Azul" onclick="filtrarProductos()">
+                <label class="form-check-label" for="inlineCheckbox6" style="width: 50px;" id="Azul">Azul</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="color-negro" value="Negro" onclick="filtrarProductos()">
+                <label class="form-check-label" for="inlineCheckbox7" style="width: 50px;" id="Negro">Negro</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="color-plomo" value="Plomo" onclick="filtrarProductos()">
+                <label class="form-check-label" for="inlineCheckbox7" style="width: 50px;" id="Plomo">Plomo</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="color-blanco" value="Blanco" onclick="filtrarProductos()">
+                <label class="form-check-label" for="color-blanco" style="width: 50px;" id="Blanco">Blanco</label>
+            </div>
+            </div>
+            
+        </div>
+    
+        <div class="ContainerImage">
+            <d class="row row-cols-1 row-cols-md-5 g-1">
+                <div class="col h-100 card-item" data-modelo="urbano" data-color="Azul">
+                    <div class="card text-center h-100">
+                        <img src='/imag/strAzul.png' class="img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Letra SR Fantama Blue</h5>
+                            <a href="/Catalogo/index" class="btn btn-primary">Ver Prenda</a>
+                            <a href="#"class="add-cart" onclick="Comprar()"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <h3 class="card-Precio">S/.50</h3>
+                    </div>
+                </div>
+                </div>
+                <div class="col h-100 card-item" data-modelo="urbano" data-color="Negro">
+                    <div class="card text-center h-100">
+                        <img src='/imag/strNegro.png' class="img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">SR Fantama Black</h5>
+                            <a href="/Catalogo/index" class="btn btn-primary">Ver Prenda</a>
+                            <a href="#"class="add-cart" onclick="Comprar()"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <h3 class="card-Precio">S/.50</h3>
+                        </div>
+                    </div>
+                </div>      
+                <div class="col h-100 card-item" data-modelo="urbano" data-color="Plomo">
+                    <div class="card text-center h-100">
+                        <img src='/imag/strPlomo.png' class="img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">SR Fantama Plomo</h5>
+                            <a href="/Catalogo/index" class="btn btn-primary">Ver Prenda</a>
+                            <a href="#"class="add-cart" onclick="Comprar()"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <h3 class="card-Precio">S/.50</h3>
+                    </div>
+                </div>
+                </div>
+                <div class="col h-100 card-item"  data-modelo="urbano" data-color="Negro">
+                    <div class="card text-center h-100">
+                        <img src='/imag/wishStop.jpg' class="img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Wish Stop</h5>
+                            <a href="/Catalogo/WishStop" class="btn btn-primary">Ver Prenda</a>
+                            <a href="#"class="add-cart" onclick="Comprar()"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <h3 class="card-Precio">S/.70</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col h-100 card-item" data-modelo="sport" data-color="Plomo">
+                    <div class="card text-center h-100">
+                        <img src='/imag/deportivo1.jpg' class="img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Deportivo Basico</h5>
+                            <a href="/Catalogo/DeportivoBasico" class="btn btn-primary">Ver Prenda</a>
+                            <a href="#" class="add-cart" onclick="Comprar()"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <h3 class="card-Precio">S/.22</h3>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col h-100 card-item" data-modelo="sport" data-color="Plomo">
+                    <div class="card text-center h-100">
+                        <img src='/imag/deportivo2.jpg' class="img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Lineas Laterales</h5>
+                            <a href="/Catalogo/Deportivo" class="btn btn-primary">Ver Prenda</a>
+                            <a href="#" class="add-cart" onclick="Comprar()"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <h3 class="card-Precio">S/.35</h3>
+                        </div>
+                    </div>
+                </div>
+                
+ 
+                
+    				<div th:each="producto : ${productos}" th:if="${producto.activo}" class="col h-100 card-item" th:attr="data-idProducto=${producto.idProducto}, data-modelo=${producto.modelo.descripcion}" data-color="Azul">
+					    <div class="card text-center h-100">
+					        <img th:src="${producto.imagen}" class="img-thumbnail" alt="...">
+					        <div class="card-body">
+					            <h5 class="card-title" th:text="${producto.descripcion}"></h5>
+					            <a th:href="@{/DetalleProducto/{idProducto}(idProducto=${producto.idProducto})}" class="btn btn-primary">Ver Prenda</a>
+					            <a href="#" class="add-cart" th:data-idProducto="${producto.idProducto}" onclick="agregarproductoclick(this)">
+					                <i class="fa-solid fa-cart-shopping"></i>
+					            </a>
+					            <h3 class="card-Precio" th:text="'S/. ' + ${producto.precio}"></h3>
+					        </div>
+					    </div>
+					</div>
+
+                
+              
+              
+                        
+                        
+            </d>
+        </div>
+    </div>
+    
+    
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item ">
+                <a class="page-link">Anterior</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="VentanaFlotante" id="VentanaFlotante">
+        <h1>Carrito de compras</h1>
+        <table class="table table-bordered">
+            <tr>
+                <td></td>
+                <td>Producto<p></p></td>
+                <td class="itemPrecio"></td>
+                <td>Cantidad<input class="inputcantidad" type="number" min="0" value="0" required style="display: none;"></td>
+                <td></td>
+            </tr>
+        </table>
+        <div class="preciocar">
+            <p>Total</p>
+            <p>S/.0</p>
+        </div>
+        <div>
+            <button id="ButtonFinalizarCompra" class="btn-Finalizar"><a href="/Usuario/Informacion" style="text-decoration: none; color: white;">Finalizar Compra</a></button>
+        </div>
+    </div>
+
+
+
+
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="/Js/Catalogo.js"/></script>
+</html>

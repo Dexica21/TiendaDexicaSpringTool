@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Categorias</title>
+
+        <!-- Custom fonts for this template-->
+        <link href="/Administración/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    
+        <!-- Custom styles for this template-->
+        <link href="/Administración/css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+        <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.5/datatables.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<div th:replace="Administrador/CabezeraModerna :: nav_var"></div>
+	
+	<div class="container-fluid">
+                        <table class="table" id="categorias">
+                            <thead>
+                                <tr>
+                                    <th><span></span>ID</th>
+                                    <th><span></span> Descripcion</th>
+                                    <th><span></span>Estado</th>
+                                    <th><span></span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="categoria : ${categorias}">
+                                    <td><span th:text="${categoria.idCategoria}" ></span></td>
+                        			<td><span th:text="${categoria.descripcion}"></span ></td>
+                        			<td><span th:text="${categoria.activo}"></span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning">Editar</button>
+                                        <button type="button" class="btn btn-danger btn-eliminar" th:data-id="${categoria.idCategoria}">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="modal fade" id="confirmarEliminarModal" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarModalLabel" aria-hidden="true">
+					    <div class="modal-dialog modal-dialog-centered" role="document">
+					        <div class="modal-content">
+					            <div class="modal-header">
+					                <h5 class="modal-title" id="confirmarEliminarModalLabel">Confirmar Eliminación</h5>
+					                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					                    <span aria-hidden="true">&times;</span>
+					                </button>
+					            </div>
+					            <div class="modal-body text-center">
+					                ¿Estás seguro de que deseas eliminar esta categoria?
+					            </div>
+					            <div class="modal-footer">
+					                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+					                <button type="button" class="btn btn-danger" id="confirmarEliminarBtn">Sí</button>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+					
+					
+					
+					<div class="modal fade" id="eliminadoExitosoModal" tabindex="-1" role="dialog" aria-labelledby="eliminadoExitosoModalLabel" aria-hidden="true">
+					    <div class="modal-dialog modal-dialog-centered" role="document">
+					        <div class="modal-content">
+					            <div class="modal-header">
+					                <h5 class="modal-title" id="eliminadoExitosoModalLabel">Eliminación Exitosa</h5>
+					                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					                    <span aria-hidden="true">&times;</span>
+					                </button>
+					            </div>
+					            <div class="modal-body text-center">
+					                <p>La categoria ha sido eliminado exitosamente.</p>
+					                <img src='/Imagenes/check.png' alt="Check" width="50">
+					            </div>
+					        </div>
+					    </div>
+					</div>
+                    
+                    
+                    
+                    
+
+					<div class="modal fade" id="ModalCat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					        <div class="modal-dialog">
+					            <div class="modal-content">
+					                <div class="modal-header">
+					                    <h5 class="modal-title" id="exampleModalLabel">Configuración de Categoria</h5>
+					                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					                        <span aria-hidden="true">&times;</span>
+					                    </button>
+					                </div>
+					                <form id="form-categoria">
+					                    <div class="modal-body">
+					                        <div class="form-group">
+					                            <label for="frm-edit-descripcion" class="col-form-label">Descripcion:</label>
+					                            <input type="text" class="form-control" id="frm-edit-descripcion" name="frm-edit-descripcion">
+					                            <input type="hidden" name="frm-edit-idCategoria">
+					                        </div>
+					                        <div class="form-group">
+					                            <label for="frm-edit-estado" class="col-form-label">Estado:</label>
+					                            <select class="form-control" id="frm-edit-estado" name="frm-edit-estado">
+					                                <option value="true" th:selected="${categoria.activo}">Activo</option>
+					                                <option value="false" th:selected="${!categoria.activo}">Inactivo</option>
+					                            </select>
+					                        </div>
+					                    </div>
+					                    <div class="modal-footer">
+					                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					                        <button id="btn-actualizarCategoria" type="submit" class="btn btn-primary">Guardar Cambios</button>
+					                    </div>
+					                </form>
+					            </div>
+					        </div>
+					    </div>
+
+</body>
+    <script src="/Administración/vendor/jquery/jquery.min.js"></script>
+    <script src="/Administración/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/Administración/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/Administración/js/sb-admin-2.min.js"></script>
+
+	<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="/Administración/js/Js.js"></script>
+    <script src="/Administración/js/Categorias.js"></script>
+    
+</body>
+</html>

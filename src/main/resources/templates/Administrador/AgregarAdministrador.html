@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+        <!-- Custom fonts for this template-->
+        <link href="/Administración/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    
+        <!-- Custom styles for this template-->
+        <link href="/Administración/css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
+        <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="DataTables/datatables.min.css" rel="stylesheet">
+</head>
+<body>
+
+	<div th:replace="Administrador/CabezeraModerna :: nav_var"></div>
+	
+	<div class="container-fluid">
+   	
+   	     <form id="form-producto" th:action="@{/Administrador/CrearCuenta}" method="post" th:object="${usuario}">
+            <h2>Agregar Administrador</h2>
+            <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                <span th:text="${param.error}"></span>
+            </div>
+
+            <div th:if="${param.success}" class="alert alert-success" role="alert">
+                ¡Registro de usuario exitoso!
+            </div>
+            <div class="form-group">
+                <label for="nombre_Usuario">Nombre de usuario:</label>
+                <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Ingresar nombre de usuario"></input>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="text" th:field="*{correo}" class="form-control" id="correo" placeholder="Ingresar Correo Electronico"></input>
+            </div>
+            <div class="form-group">
+                <label for="pass">Contraseña:</label>
+                <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Ingresar contraseña"></input>
+            </div>
+           
+            <button id="btn-guardar-administrador" onclick="RegistrarAdmin()" type="submit" class="btn btn-primary">Guardar Administrador</button>
+            <button id="btn-cancelar-administrador" type="submit"  class="btn btn-secondary">Cancelar</button>
+			<hr class="sidebar-divider">
+			<h6>Dexica</h6>
+        </form>
+
+
+</body>
+    <script src="/Administración/vendor/jquery/jquery.min.js"></script>
+    <script src="/Administración/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Administración/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <script src="/Administración/js/sb-admin-2.min.js"></script>
+
+	<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+</body>
+</html>
